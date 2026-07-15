@@ -30,6 +30,13 @@ Requirements:
 
 If your build log fails at `Deploy a container application` with `Unauthorized`, your build token is missing required Containers/Cloudchamber permissions.
 
+Runtime settings such as `AUTO_CLEANUP_DAYS`, `MAX_DOWNLOAD_MB`,
+`DOWNLOAD_THREADS`, and `ACCESS_PASSWORD` can be added under the Worker's
+**Settings → Variables and Secrets** page. Store `ACCESS_PASSWORD` as a secret,
+then deploy again so the Container restarts with the new values. See the
+[Cloudflare deployment notes](cloudflare/README.md#environment-variables) for
+the complete list and restart command.
+
 ### Deploy to Railway
 
 <details>

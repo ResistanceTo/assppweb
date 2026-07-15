@@ -25,6 +25,33 @@ For local preview on Cloudflare runtime:
 npx wrangler dev
 ```
 
+## Environment Variables
+
+Set runtime configuration under the Worker's **Settings → Variables and
+Secrets** page. The Worker forwards these values to the Container when the
+Container starts. Wrangler is configured with `keep_vars` so Git deployments
+preserve text variables added in the dashboard.
+
+- `PUBLIC_BASE_URL`
+- `UNSAFE_DANGEROUSLY_DISABLE_HTTPS_REDIRECT`
+- `AUTO_CLEANUP_DAYS`
+- `AUTO_CLEANUP_MAX_MB`
+- `MAX_DOWNLOAD_MB`
+- `DOWNLOAD_THREADS`
+- `ACCESS_PASSWORD`
+
+Store `ACCESS_PASSWORD` as a secret. The other values can be text variables.
+Do not override `PORT` or `DATA_DIR`; the Cloudflare deployment requires port
+`8080` and uses `/data` for the Container filesystem.
+
+Environment variables are applied when the Container process starts. After
+changing them, deploy again and allow the Container rollout to complete. To
+force the single Container instance to restart immediately, deploy with:
+
+```bash
+npx wrangler deploy --containers-rollout=immediate
+```
+
 ## Notes
 
 - Deploy configuration lives in the repository root `wrangler.jsonc`.
