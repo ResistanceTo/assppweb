@@ -21,7 +21,7 @@ const defaultContainerEnv = {
 export class AssppContainer extends Container {
   defaultPort = 8080;
   requiredPorts = [8080];
-  sleepAfter = '2h';
+  sleepAfter = '30m';
   enableInternet = true;
   pingEndpoint = '/api/settings';
   envVars = defaultContainerEnv;
